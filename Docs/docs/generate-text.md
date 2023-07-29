@@ -40,7 +40,7 @@ public class TextGenerationResponse
 
 :::
 
-#### Example Code
+## Example
 
 ```cs
 using UnityEngine;

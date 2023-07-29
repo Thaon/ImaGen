@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Images can be generated using the following method:
 
-```js
+```cs
 
 Kindly.Instance.GenerateImage(string prompt, string negativePrompt, int selectedModelID);
 
@@ -16,7 +16,7 @@ And must follow the following format when requesting a new image:
 
 :::info Image Generation Request Class
 
-```jsx
+```cs
  public class GenerationRequest
 {
     public string prompt;
@@ -32,7 +32,7 @@ The resulting image will have the following format:
 
 :::info Image Generation Class
 
-```jsx
+```cs
 public class Generation
 {
     public int id;
@@ -44,7 +44,7 @@ public class Generation
 
 :::
 
-#### Example Code
+## Example
 
 ```cs
 using UnityEngine;
