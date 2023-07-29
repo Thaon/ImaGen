@@ -12,6 +12,19 @@ In this documentation, we will explore the features of the Kindly Unity Package,
 
 If you are ready to start integrating Kindly into your Unity project, head over to the [Setup](/docs/setup) page to get started.
 
+<button style={{
+    color: '#ffffff',
+    backgroundColor: '#2dc870',
+    fontSize: '19px',
+    border: '1px solid #2cc870',
+    padding: '15px 50px',
+    cursor: 'pointer',
+}} onClick={
+() => {
+window.location.href = '/docs/setup'
+}
+}>CHECK OUT THE DOCS</button>
+
 <!-- <hr />
 
 ## Setup
