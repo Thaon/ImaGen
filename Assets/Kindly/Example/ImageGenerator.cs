@@ -11,13 +11,13 @@ public class ImageGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        ImaGen.Instance.OnImagesReceived += EnableBtn;
+        Kindly.Instance.OnImagesReceived += EnableBtn;
     }
 
     private void OnDisable()
     {
-        if (!ImaGen.Quitting)
-            ImaGen.Instance.OnImagesReceived -= EnableBtn;
+        if (!Kindly.Quitting)
+            Kindly.Instance.OnImagesReceived -= EnableBtn;
     }
 
     public void GenerateStableDiffusion()
@@ -28,7 +28,7 @@ public class ImageGenerator : MonoBehaviour
             return;
         }
         string prompt = _if.text;
-        ImaGen.Instance.GenerateImage(prompt, "", _selectedModel.id);
+        Kindly.Instance.GenerateImage(prompt, "", _selectedModel.id);
         _generateBtn.interactable = false;
     }
 

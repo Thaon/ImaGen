@@ -50,9 +50,21 @@ namespace MADD
         public Model sd_model;
     }
 
+    public class TextGenerationRequest
+    {
+        public string prompt;
+        public string apiKey;
+    }
+
+    public class TextGenerationResponse
+    {
+        public string status;
+        public string text;
+    }
+
     #endregion
 
-    public class ImaGen : Singleton<ImaGen>
+    public class Kindly : Singleton<Kindly>
     {
         #region member variables
 
@@ -71,6 +83,10 @@ namespace MADD
         public Generation[] _generations, _latest;
 
         public Action OnModelsReceived, OnImagesReceived;
+
+        [Header("GPT")]
+        public string _generatedText;
+        public Action OnTextReceived;
 
         #endregion
 
@@ -155,6 +171,39 @@ namespace MADD
                 });
                 _generations = gens.ToArray();
                 OnImagesReceived?.Invoke();
+            });
+        }
+
+        #endregion
+
+        #region GPT
+
+        public void GenerateText(string prompt)
+        {
+            RequestHelper req = new RequestHelper
+            {
+                Uri = _apiUrl + "/api/chat-simple",
+                Body = new TextGenerationRequest
+                {
+                    prompt = prompt,
+                    apiKey = _apiKey
+                },
+            };
+            RestClient.Post<TextGenerationResponse>(req).Then(res =>
+            {
+                if (res.status == "OK")
+                {
+                    _generatedText = res.text;
+                    OnTextReceived?.Invoke();
+                }
+                else
+                {
+                    _generatedText = "Sorry, something went wrong :(";
+                    OnTextReceived?.Invoke();
+                }
+            }).Catch(err =>
+            {
+                Debug.LogWarning(err.Message);
             });
         }
 

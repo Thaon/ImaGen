@@ -11,13 +11,13 @@ public class ImagesGrid : MonoBehaviour
 
     void OnEnable()
     {
-        ImaGen.Instance.OnImagesReceived += SetupGrid;
+        Kindly.Instance.OnImagesReceived += SetupGrid;
     }
 
     private void OnDisable()
     {
-        if (!ImaGen.Quitting)
-            ImaGen.Instance.OnImagesReceived -= SetupGrid;
+        if (!Kindly.Quitting)
+            Kindly.Instance.OnImagesReceived -= SetupGrid;
     }
 
     private void SetupGrid()
@@ -29,14 +29,14 @@ public class ImagesGrid : MonoBehaviour
         }
 
         // get generator
-        ImaGen gen = ImaGen.Instance;
+        Kindly gen = Kindly.Instance;
 
         // spawn images
         Array.ForEach(gen._generations, generation =>
         {
             GameObject go = Instantiate(_imagePrefab, transform);
             RawImage img = go.GetComponent<RawImage>();
-            ImaGen.Instance.DownloadImage(ImaGen.Instance.ApiUrl + generation.image.url, img);
+            Kindly.Instance.DownloadImage(Kindly.Instance.ApiUrl + generation.image.url, img);
         });
     }
 }

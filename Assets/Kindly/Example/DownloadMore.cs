@@ -7,7 +7,7 @@ public class DownloadMore : MonoBehaviour
 
     public void DownloadMoreImages()
     {
-        ImaGen.Instance.DownloadImages(_page, 5);
+        Kindly.Instance.DownloadImages(_page, 5);
         _page++;
     }
 }

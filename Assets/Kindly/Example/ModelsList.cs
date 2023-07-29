@@ -13,13 +13,13 @@ public class ModelsList : MonoBehaviour
 
     void OnEnable()
     {
-        ImaGen.Instance.OnModelsReceived += SetupList;
+        Kindly.Instance.OnModelsReceived += SetupList;
     }
 
     private void OnDisable()
     {
-        if (!ImaGen.Quitting)
-            ImaGen.Instance.OnModelsReceived -= SetupList;
+        if (!Kindly.Quitting)
+            Kindly.Instance.OnModelsReceived -= SetupList;
     }
 
     private void SetupList()
@@ -31,7 +31,7 @@ public class ModelsList : MonoBehaviour
         }
 
         // get generator
-        ImaGen gen = ImaGen.Instance;
+        Kindly gen = Kindly.Instance;
 
         // spawn items
         foreach(Model model in gen._models)
@@ -39,7 +39,7 @@ public class ModelsList : MonoBehaviour
             GameObject go = Instantiate(_listItemPrefab, transform);
             _listElements.Add(go);
             RawImage img = go.GetComponentInChildren<RawImage>();
-            if (model.image_url.Length > 0) ImaGen.Instance.DownloadImage(model.image_url, img);
+            if (model.image_url.Length > 0) Kindly.Instance.DownloadImage(model.image_url, img);
             go.GetComponentsInChildren<Text>()[0].text = model.name;
             go.GetComponentsInChildren<Text>()[1].text = model.description;
             // setup model selection through onClick listener
