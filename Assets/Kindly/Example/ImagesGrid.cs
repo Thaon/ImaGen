@@ -36,7 +36,7 @@ public class ImagesGrid : MonoBehaviour
         {
             GameObject go = Instantiate(_imagePrefab, transform);
             RawImage img = go.GetComponent<RawImage>();
-            Kindly.Instance.DownloadImage(Kindly.Instance.ApiUrl + generation.image.url, img);
+            Kindly.Instance.DownloadImage(generation.image.url, img);
         });
     }
 }

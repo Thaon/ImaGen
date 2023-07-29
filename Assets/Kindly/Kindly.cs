@@ -80,7 +80,8 @@ namespace MADD
         [Header("Images")]
         public bool _loadModelsOnStartup = false;
         public Model[] _models;
-        public Generation[] _generations, _latest;
+        public Generation[] _generations;
+        public Generation _latest;
 
         public Action OnModelsReceived, OnImagesReceived;
 
@@ -123,7 +124,7 @@ namespace MADD
             };
             RestClient.Post<Generation>(req).Then(res =>
             {
-                _latest = new Generation[] { res };
+                _latest = res;
                 List<Generation> gens = new List<Generation>(_generations);
                 gens.Add(res);
                 _generations = gens.ToArray();
@@ -138,7 +139,7 @@ namespace MADD
         {
             RestClient.Get(new RequestHelper
             {
-                Uri = url,
+                Uri = _apiUrl + url,
                 DownloadHandler = new DownloadHandlerTexture()
             }).Then(res => {
                 Texture2D tex = ((DownloadHandlerTexture)res.Request.downloadHandler).texture;
@@ -161,7 +162,7 @@ namespace MADD
                 },
             };
             RestClient.PostArray<Generation>(req).Then(res => {
-                _latest = res;
+                _latest = res[0];
                 List<Generation> gens = new List<Generation>(_generations);
                 // add only the generations we don't already have locally
                 Array.ForEach(res, g =>
