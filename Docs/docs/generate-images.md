@@ -8,7 +8,7 @@ Images can be generated using the following method:
 
 ```js
 
-ImaGen.Instance.GenerateImage(string prompt, string negativePrompt, int selectedModelID);
+Kindly.Instance.GenerateImage(string prompt, string negativePrompt, int selectedModelID);
 
 ```
 
@@ -46,7 +46,7 @@ public class Generation
 
 #### Example Code
 
-```csharp
+```cs
 using UnityEngine;
 using MADD;
 
@@ -58,13 +58,13 @@ public class ImageGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        ImaGen.Instance.OnImagesReceived += EnableBtn;
+        Kindly.Instance.OnImagesReceived += EnableBtn;
     }
 
     private void OnDisable()
     {
-        if (!ImaGen.Quitting)
-            ImaGen.Instance.OnImagesReceived -= EnableBtn;
+        if (!Kindly.Quitting)
+            Kindly.Instance.OnImagesReceived -= EnableBtn;
     }
 
     public void GenerateStableDiffusion()
@@ -75,7 +75,7 @@ public class ImageGenerator : MonoBehaviour
             return;
         }
         string prompt = _if.text;
-        ImaGen.Instance.GenerateImage(prompt, "", _selectedModel.id);
+        Kindly.Instance.GenerateImage(prompt, "", _selectedModel.id);
         _generateBtn.interactable = false;
     }
 

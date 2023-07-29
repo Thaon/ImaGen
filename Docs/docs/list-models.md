@@ -9,7 +9,7 @@ Models will have the following format:
 
 :::info Model Class
 
-```jsx
+```cs
 public class Model
 {
     public int id;
@@ -25,7 +25,7 @@ public class Model
 
 ## Example
 
-```csharp
+```cs
 using UnityEngine;
 using MADD;
 
@@ -34,23 +34,23 @@ public class DownloadModels : MonoBehaviour
 {
     void OnEnable()
     {
-        ImaGen.Instance.OnModelsReceived += ListModels;
+        Kindly.Instance.OnModelsReceived += ListModels;
     }
 
     private void OnDisable()
     {
-        if (!ImaGen.Quitting)
-            ImaGen.Instance.OnModelsReceived -= ListModels;
+        if (!Kindly.Quitting)
+            Kindly.Instance.OnModelsReceived -= ListModels;
     }
 
     public void DownloadModels()
     {
-        ImaGen.Instance.GetModels();
+        Kindly.Instance.GetModels();
     }
 
     private void ListModels()
     {
-        foreach (var model in ImaGen.Instance._models_)
+        foreach (var model in Kindly.Instance._models)
         {
             Debug.Log(model.name);
         }

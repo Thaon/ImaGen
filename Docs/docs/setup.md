@@ -16,4 +16,5 @@ sidebar_position: 1
     <img src="/img/api-screen.png" alt="Initialize" />
 </div>
 
-2. Press Play and have fun!
+2. Open one of the demo scenes in the Kindly package.
+3. Press Play and have fun!
