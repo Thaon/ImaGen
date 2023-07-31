@@ -139,7 +139,7 @@ namespace MADD
         {
             RestClient.Get(new RequestHelper
             {
-                Uri = _apiUrl + url,
+                Uri = url,
                 DownloadHandler = new DownloadHandlerTexture()
             }).Then(res => {
                 Texture2D tex = ((DownloadHandlerTexture)res.Request.downloadHandler).texture;
