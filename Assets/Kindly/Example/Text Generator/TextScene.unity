@@ -151,11 +151,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  _apiKey: WNRRI10M3NI
+  _apiKey: 
   _loadModelsOnStartup: 1
   _models: []
   _generations: []
-  _latest: []
+  _latest:
+    id: 0
+    image:
+      url: 
+    prompt: 
+    sd_model:
+      id: 0
+      name: 
+      description: 
+      image_url: 
+      triggers: []
+      categories: []
   _generatedText: 
 --- !u!4 &86112783
 Transform:

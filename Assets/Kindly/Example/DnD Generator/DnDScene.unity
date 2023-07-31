@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  _apiKey: WNRRI10M3NI
+  _apiKey: 
   _loadModelsOnStartup: 1
   _models: []
   _generations: []
